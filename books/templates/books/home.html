@@ -1,0 +1,15 @@
+{% extends 'books/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!--images-->
+<img src="{% static '/css/images/My prince (jungkook ff).jpg' %}" class="card-img-top" style="height: 580px;" width="100px;">
+<h1> Library </h1>
+<a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'all-books' %}">Bookstore</a><br>
+
+
+
+
+{% endblock content %}

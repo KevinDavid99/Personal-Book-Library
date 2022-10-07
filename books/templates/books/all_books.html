@@ -1,0 +1,73 @@
+{% extends 'books/base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <style type="text/css">
+        .sidenav {
+            height:100%;
+            width: 270px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left:0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+
+        .row {
+            justify-content: center;
+            margin-left: 90px;
+        }
+
+        .sidenav a {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+        }
+        
+        .sidenav a:hover{
+            color: #f1f1f1;
+        }
+        
+        
+
+
+    </style>
+<div class="container mb-4">
+    <div class="row">
+        <!--side navbar here-->
+      <div class="sidenav">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'add-book' %}">Create</a>
+        <a href="">View</a>
+      </div>
+      <!-- <div class="main"></div> -->
+
+        <!--Books Here-->
+
+        <div class="col-md-9 mt-3" >
+            <div class="row">
+                <!--using a afor loop to loop through all the books-->
+                {% for book in books %}
+                <div class="col-md-4">
+                    <div class="card my-2">
+                        <!--images-->
+                        <a href=""><img src="{{book.image.url}}" class="card-img-top" style="height:310px"></a>
+                        <div class="card-body">
+                            <!--this one is the book title-->
+                            <h4 class="card-text">{{ book.title }}</h4>
+                        </div>
+                        <a href="{% url 'book-detail' book.id %}" class="btn btn-secondary btn-sm mt-1 mb-1">View Book</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

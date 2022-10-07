@@ -1,0 +1,22 @@
+{% extends 'books/base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="">
+                <a href="{% url 'all-books' %}" class="my-3 btn btn-dark btn-sm">Go Back</a>
+            </div>
+            <div style="height: 90vh;">
+                <img src="{{ book.image.url }}" alt="" class="img-fluid text-center" style="max-width: 100%; max-height: 100%"">
+                <h5 class="text-muted">Author: {{book.author}}</h5><br>
+                <h6>Description: {{book.description}}</h6><br>
+                <small>ISBN: {{book.isbn}}</small><br>
+                <small>Price: {{book.price}}</small><br>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'update' book.id %}">Update</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'delete' book.id %}">Delete</a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
